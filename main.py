@@ -111,14 +111,12 @@ def transform(img, matrix, interp_fn, out_shape):
     return interp_fn(img, src_coords[..., 0], src_coords[..., 1])
 
 
-# Загружаем PPM файл
 image_path = "котик.ppm"
 img = load_ppm(image_path)
 
 if img is not None:
     h, w = img.shape[:2]
 
-    # Матрицы преобразований
     M_scale = np.array([[1.5, 0, 0], [0, 1.5, 0], [0, 0, 1]], dtype=np.float32)
 
     theta = np.radians(30)
@@ -132,7 +130,6 @@ if img is not None:
 
     M_shear = np.array([[1, 0.3, 0], [0, 1, 0], [0, 0, 1]], dtype=np.float32)
 
-    # Названия на русском для графиков
     transforms = [
         ("Масштабирование 1.5x", M_scale, (int(h * 1.5), int(w * 1.5))),
         ("Поворот на 30°", M_rot, (h, w)),
